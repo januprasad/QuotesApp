@@ -3,6 +3,9 @@ package com.github.januprasad.quotesapp.di
 import com.github.januprasad.quotesapp.repo.QuoteRepository
 import com.github.januprasad.quotesapp.repo.QuotesRepositoryImpl
 import com.github.januprasad.quotesapp.retrofit.QuotesAPI
+import com.github.januprasad.quotesapp.usecase.GetQuotesUseCase
+import com.github.januprasad.quotesapp.usecase.GetQuotesUseCaseImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

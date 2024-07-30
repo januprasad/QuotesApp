@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class QuotesRepositoryImpl(
-    val quotesAPI: QuotesAPI,
+    private val quotesAPI: QuotesAPI,
 ) : QuoteRepository {
     override fun randomQuote() =
         flow<NetworkResult<Quote>> {

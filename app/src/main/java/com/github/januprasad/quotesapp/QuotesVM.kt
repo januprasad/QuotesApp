@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.januprasad.quotesapp.common.NetworkResult
 import com.github.januprasad.quotesapp.model.Quote
 import com.github.januprasad.quotesapp.repo.QuoteRepository
+import com.github.januprasad.quotesapp.usecase.GetQuotesUseCaseImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +19,7 @@ import javax.inject.Inject
 class MyQuotesVM
     @Inject
     constructor(
-        val repository: QuoteRepository,
+        val useCase: GetQuotesUseCaseImpl,
     ) : ViewModel() {
         private val _uiState = MutableStateFlow(AppState.UiState())
         val uiState: StateFlow<AppState.UiState> get() = _uiState.asStateFlow()
@@ -26,8 +27,8 @@ class MyQuotesVM
         fun events(event: Events) {
             when (event) {
                 is Events.RandomQuote -> {
-                    repository
-                        .randomQuote()
+                    useCase
+                        .invoke()
                         .onEach { result ->
                             when (result) {
                                 is NetworkResult.Loading -> {

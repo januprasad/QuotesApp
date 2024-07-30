@@ -6,7 +6,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.github.januprasad.hilt_example.R
+import com.github.januprasad.quotesapp.R
 
 val extensaFamily =
     FontFamily(
