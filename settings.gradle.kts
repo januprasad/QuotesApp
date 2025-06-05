@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "QuotesApp"
 include(":app")
+include(":disney")
