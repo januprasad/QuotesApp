@@ -34,6 +34,6 @@ object AppModule {
 
 
     @Provides
-    fun bindRepo(api: DisneyAPI) =
+    fun bindRepo(api: DisneyAPI) : DisneyAPIRepository =
         DisneyAPIRepositoryImpl(api)
 }

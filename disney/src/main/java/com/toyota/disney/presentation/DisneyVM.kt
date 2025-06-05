@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.toyota.disney.common.ResultType
 import com.toyota.disney.repo.model.DisneyCharResponse
+import com.toyota.disney.respository.DisneyAPIRepository
 import com.toyota.disney.respository.DisneyAPIRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,16 +17,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DisneyVM @Inject constructor(
-    private val disneyAPIRepository: DisneyAPIRepositoryImpl
+    private val disneyAPIRepository: DisneyAPIRepository,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(AppState.UiState())
     val uiState: StateFlow<AppState.UiState> get() = _uiState.asStateFlow()
 
-    init {
-        onEvent(DisneyEvent.GetCharacter)
-    }
-    private fun onEvent(event: DisneyEvent) {
+    fun onEvent(event: DisneyEvent) {
         when (event) {
             DisneyEvent.GetCharacter -> {
                 disneyAPIRepository.getCharacters().onEach { result ->
